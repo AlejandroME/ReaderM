@@ -6,6 +6,8 @@ object ApplicationConfig {
 
   val config: Config = ConfigFactory.load()
 
+  val activeDatabase: String = config.getString("activeDatabase")
+
   val driverClassName: String = config.getString("postgres.driverClassName")
   val connectionString: String = config.getString("postgres.connectionString")
   val userName: String = config.getString("postgres.userName")
