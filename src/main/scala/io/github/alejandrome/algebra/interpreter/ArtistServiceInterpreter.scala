@@ -22,9 +22,14 @@ class ArtistServiceInterpreter extends ArtistService[Artist]{
       repo.query(name)
   }
 
-  override def insertArtist(artist: Artist): Reader[ArtistRepository, Unit] = Reader {
+  override def insertArtist(artist: Artist): Reader[ArtistRepository, Int] = Reader {
     repo: ArtistRepository =>
       repo.insert(artist)
+  }
+
+  override def updateArtist(artist: Artist): Reader[ArtistRepository, Int] = Reader {
+    repo: ArtistRepository =>
+      repo.update(artist)
   }
 
 }

@@ -32,7 +32,13 @@ class ArtistPGRepositoryTest extends FlatSpec with Matchers{
   }
 
   it should "insert artist 'JOSEPH MOUNT' in artists table" in {
-    noException should be thrownBy ArtistServiceInterpreter.retrieveArtistByName("JOSEPH MOUNT").run(repo)
+    val artist = Artist(0, "JOSEPH MOUNT", 35)
+    ArtistServiceInterpreter.insertArtist(artist).run(repo) shouldBe 1
+  }
+
+  it should "update artist 'KIM GORDON' age" in {
+    val artist = Artist(1, "KIM GORDON", 22)
+    ArtistServiceInterpreter.updateArtist(artist).run(repo) shouldBe 1
   }
 
 }

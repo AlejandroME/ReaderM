@@ -7,6 +7,6 @@ trait ArtistRepository extends Repository[Artist, Int]{
   def query(): List[Artist]
   def query(id: Int): Option[Artist]
   def query(name: String): Option[Artist]
-  def insert(obj: Artist): Unit
+  def insert(obj: Artist): Int
   def update(obj: Artist): Int
 }

@@ -8,6 +8,7 @@ trait ArtistService[T] {
   def listArtists(): Reader[ArtistRepository, List[T]]
   def retrieveArtistById(id: Int): Reader[ArtistRepository, Option[T]]
   def retrieveArtistByName(name: String): Reader[ArtistRepository, Option[T]]
-  def insertArtist(artist: T): Reader[ArtistRepository, Unit]
+  def insertArtist(artist: T): Reader[ArtistRepository, Int]
+  def updateArtist(artist: T): Reader[ArtistRepository, Int]
 
 }

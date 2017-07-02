@@ -45,18 +45,28 @@ class ArtistPGRepository extends ArtistRepository{
     tx.unsafePerformIO
   }
 
-  override def insert(obj: Artist): Unit = {
-    val q = sql"INSERT INTO ARTISTS(STAGENAME, AGE) VALUES(${obj.stageName}, ${obj.age})".update
+  override def insert(obj: Artist): Int = {
+    val q = sql"INSERT INTO ARTISTS(STAGENAME, AGE) VALUES(${obj.stageName}, ${obj.age})".update.run
 
-    val tx = for {
+    val tx: IOLite[Int] = for {
       connection     <- HikariTransactor[IOLite](driverClassName, connectionString, userName, password)
       _              <- connection.configure(hx => IOLite.primitive(hx.setAutoCommit(true)))
-      databaseAccess <- q.run.transact(connection).run ensuring connection.shutdown
+      databaseAccess <- q.transact(connection) ensuring connection.shutdown
     } yield databaseAccess
 
-    ??? //tx.run
+    tx.unsafePerformIO
   }
 
-  override def update(obj: Artist): Int = ???
+  override def update(obj: Artist): Int = {
+    val q = sql"UPDATE ARTISTS SET STAGENAME = ${obj.stageName}, AGE = ${obj.age} WHERE ARTISTID = ${obj.artistID}".update.run
+
+    val tx: IOLite[Int] = for {
+      connection     <- HikariTransactor[IOLite](driverClassName, connectionString, userName, password)
+      _              <- connection.configure(hx => IOLite.primitive(hx.setAutoCommit(true)))
+      databaseAccess <- q.transact(connection) ensuring connection.shutdown
+    } yield databaseAccess
+
+    tx.unsafePerformIO
+  }
 
 }
