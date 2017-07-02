@@ -1,0 +1,15 @@
+.idea/
+target/
+*.class
+*.log
+*.DS_Store
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+dist/
+LOG_PATH_IS_UNDEFINED/
+
