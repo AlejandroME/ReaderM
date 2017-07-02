@@ -1,8 +1,7 @@
-package io.github.alejandrome
+package io.github.alejandrome.repository.impl
 
 import io.github.alejandrome.algebra.interpreter.ArtistServiceInterpreter
 import io.github.alejandrome.model.Artist
-import io.github.alejandrome.repository.impl.ArtistPGRepository
 import org.scalatest.{FlatSpec, Matchers}
 
 class ArtistPGRepositoryTest extends FlatSpec with Matchers{
