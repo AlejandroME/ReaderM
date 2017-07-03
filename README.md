@@ -43,6 +43,17 @@ The requests (in the actual version) that you can issue are:
 
 All the examples and the entities for creating and updating an artists are included in the project root as a [Postman](https://www.getpostman.com/) collection if you want to take a look and test it for yourself.
 
+# Database initialization
+
+This first version assumes that you have a local installation of PostgreSQL running in your machine with the default user/schema (`postgres`). You can run the `DDL_PG.sql` script (located in the `SQL/` folder of this project) in that schema for creating all the database model and then run the `DML_PG.sql` that contains a very basic dataset.
+This is not yet automated, but it will in future versions, so you don't have to do it by hand.
+
+If you are running macOS you can use the excellent [Postgres.app](https://postgresapp.com/) that runs a complete instance in your machine without configuring or messing up with a new installation of PG.
+
+In other OS's you need to install the Database engine and execute the scripts mentioned above.
+
+**REMEMBER:** the model is created in the `postgres` default schema.
+
 # Disclaimer
 
 As noted before, this is a _toy project_, so, things like exception handling, exception messages and so on can fail abruptly. This is going to be improved in future versions of this project. Again, the code here is only for demonstration purposes and it isn't intended for production use (yet?).
