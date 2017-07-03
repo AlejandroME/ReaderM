@@ -1,0 +1,124 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Artists",
+		"_postman_id": "3f043644-402e-5c51-8cc4-ccb63524416e",
+		"description": "Collection with the basic requests for Artists API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List all Artists",
+			"request": {
+				"url": "http://localhost:7101/api/artists",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Artist",
+			"request": {
+				"url": "http://localhost:7101/api/artists",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"artistID\": 0,\n        \"stageName\": \"JEAN-MICHEL JARRE\",\n        \"age\": 68\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update an Artist",
+			"request": {
+				"url": "http://localhost:7101/api/artists",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"artistID\": 25,\n        \"stageName\": \"JEAN-MICHEL JARRE MODIFIED\",\n        \"age\": 99\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Query an artist by ID",
+			"request": {
+				"url": {
+					"raw": "http://localhost:7101/api/artists?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7101",
+					"path": [
+						"api",
+						"artists"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Query an artist by exact name",
+			"request": {
+				"url": {
+					"raw": "http://localhost:7101/api/artists?name=KIM GORDON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7101",
+					"path": [
+						"api",
+						"artists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "KIM GORDON",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

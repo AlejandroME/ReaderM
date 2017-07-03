@@ -17,7 +17,7 @@ trait RejectionHandlerApi {
           complete((BadRequest, "One or more query params are required."))
       }
       .handle {
-        case MalformedQueryParamRejection(parameterName, errorMsg, _) =>
+        case MalformedQueryParamRejection(_, _, _) =>
           complete((BadRequest, "One of the supplied query params are malformed or invalid"))
       }
       .handle {
